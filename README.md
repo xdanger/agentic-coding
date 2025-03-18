@@ -38,6 +38,11 @@
 
 ```txt
 project-root/
+├── .agent/                          # Agent 专用资源
+│   ├── memory/                      # Agent 的持久记忆
+│   ├── guidelines/                  # 编码和风格指南
+│   ├── tasks/                       # 任务模板和历史
+│   └── context/                     # 全局上下文信息
 ├── .github/                         # GitHub 模板和工作流
 ├── docs/                            # 核心文档
 │   ├── architecture/                # 架构文档
@@ -47,11 +52,6 @@ project-root/
 │   ├── specifications/              # 详细规格说明
 │   ├── guides/                      # 开发和使用指南
 │   └── HISTORY.md                   # 项目历史和变更记录
-├── .agent/                          # Agent 专用资源
-│   ├── memory/                      # Agent 的持久记忆
-│   ├── guidelines/                  # 编码和风格指南
-│   ├── tasks/                       # 任务模板和历史
-│   └── context/                     # 全局上下文信息
 ├── src/                             # 源代码
 ├── tests/                           # 测试代码
 └── README.md                        # 项目概述

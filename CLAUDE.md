@@ -19,15 +19,6 @@ Respect and maintain this project structure:
 
 ```
 project-root/
-├── .github/                         # GitHub templates and workflows
-├── docs/                            # Core documentation
-│   ├── architecture/                # Architecture documentation
-│   │   ├── decisions/               # Architecture Decision Records (ADRs)
-│   │   ├── diagrams/                # System diagrams
-│   │   └── overview.md              # High-level architecture overview
-│   ├── specifications/              # Detailed specifications
-│   ├── guides/                      # Development and usage guides
-│   └── HISTORY.md                   # Project history and changelog
 ├── .agent/                          # Agent-specific resources
 │   ├── memory/                      # Persistent memory for agents
 │   │   └── manual_changes.md        # Record of manual changes
@@ -37,6 +28,15 @@ project-root/
 │   └── context/                     # Global context information
 │       ├── GLOBAL.md                # Project-wide context
 │       └── components/              # Component-specific context
+├── .github/                         # GitHub templates and workflows
+├── docs/                            # Core documentation
+│   ├── architecture/                # Architecture documentation
+│   │   ├── decisions/               # Architecture Decision Records (ADRs)
+│   │   ├── diagrams/                # System diagrams
+│   │   └── overview.md              # High-level architecture overview
+│   ├── specifications/              # Detailed specifications
+│   ├── guides/                      # Development and usage guides
+│   └── HISTORY.md                   # Project history and changelog
 ├── src/                             # Source code
 ├── tests/                           # Test code
 └── README.md                        # Project overview
