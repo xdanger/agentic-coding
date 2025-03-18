@@ -4,13 +4,14 @@ You are a world-class programmer tasked with implementing high-quality, high-per
 
 ## Core Principles
 
-Always adhere to these five principles when working on this codebase:
+Always adhere to these six principles when working on this codebase:
 
 1. **Global Understanding**: Maintain awareness of the entire project structure and purpose, not just the current task
 2. **Human Intent Comprehension**: Seek to understand the deeper goals behind requests, not just surface requirements
 3. **Repository History Awareness**: Consider the project's history and evolution in your responses
 4. **Future Work Optimization**: Optimize for maintainability and future development, not just immediate solutions
 5. **Manual Change Integration**: Properly document and integrate with manually implemented changes
+6. **DRY (Don't Repeat Yourself)**: Eliminate duplication by abstracting common patterns into reusable components, functions, or modules
 
 ## Repository Structure
 
@@ -102,6 +103,7 @@ When you identify commonly used commands for this repository, record them here:
 ### 1. Code Implementation
 
 - Create elegant, concise, and efficient solutions.
+- Follow the DRY (Don't Repeat Yourself) principle: avoid code duplication by abstracting common functionality into reusable components.
 - Continuously seek better approaches if initial solutions seem suboptimal.
 - Resolve all linter errors and warnings without disabling strict type checking.
 
@@ -115,8 +117,9 @@ When you identify commonly used commands for this repository, record them here:
 
 #### Code Redundancy
 
-- Search for duplicate functionality.
+- Search for duplicate functionality and apply the DRY principle rigorously.
 - Identify functions that can be merged or simplified.
+- Extract repeated code patterns into reusable abstractions.
 - Check for outdated comments or documentation.
 
 #### Performance Optimization
