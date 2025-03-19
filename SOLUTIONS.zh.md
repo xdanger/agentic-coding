@@ -36,7 +36,7 @@ project-root/
 │   │   ├── performance-metrics.md  # 性能基准和目标
 │   │   ├── code-quality-metrics.md # 代码质量评估
 │   │   └── test-coverage.md        # 测试覆盖率统计
-│   └── debt/                       # 技术债务跟踪
+│   └── debts/                      # 技术债务跟踪
 │       └── {ISSUE_TITLE}.md        # 单个技术债务记录
 ├── docs/                           # 面向用户的文档
 │   ├── architecture/               # 架构文档
@@ -138,7 +138,7 @@ project-root/
 
 创建用于跟踪和管理技术债务的系统：
 
-1. 在 `.agent/debt/{ISSUE_TITLE}.md` 中的标准化债务文档格式：
+1. 在 `.agent/debts/{ISSUE_TITLE}.md` 中的标准化债务文档格式：
    - 问题描述
    - 影响评估
    - 建议的解决方案

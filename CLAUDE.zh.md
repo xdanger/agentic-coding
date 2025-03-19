@@ -19,40 +19,36 @@
 
 ```txt
 project-root/
-├── .agent/                         # 代理特定资源
-│   ├── context/                    # 全局上下文和理解
-│   │   ├── overview.md             # 项目范围的上下文和技术架构
-│   │   ├── interfaces.md           # API 和接口文档
-│   │   └── components/             # 组件特定上下文
-│   │       └── {component_name}.md # 单个组件文档
-│   ├── rules/                      # 标准和规范
-│   │   ├── coding-standards.md     # 特定语言的编码指南
-│   │   ├── documentation-standards.md # 文档格式规则
-│   │   └── testing-standards.md    # 测试方法和覆盖率要求
-│   ├── memory/                     # 代理持久性记忆
-│   │   ├── tasks/                  # 任务执行历史
-│   │   │   └── YYYY-MM/DD_{SEQ}.md # 单个任务记录
-│   │   ├── experience/             # 经验教训和反思
-│   │   │   └── YYYY-MM/{TITLE}.md  # 按主题分类的经验记录
-│   │   ├── releases/               # 版本发布信息
-│   │   │   └── YYYY-MM/v{VER}.md   # 特定版本的发布说明
-│   │   └── manual_changes.md       # 人工更改记录
+├── .agent/                         # AI/代理特定资源（由AI维护）
+│   ├── tasks/                      # 任务执行历史
+│   │   └── YYYY-MM/DD_{SEQ}.md     # 单个任务记录
+│   ├── experiences/                # 经验教训和反思
+│   │   └── YYYY-MM/{TITLE}.md      # 按主题分类的经验记录
+│   ├── releases/                   # 版本发布信息
+│   │   └── YYYY-MM/v{VER}.md       # 特定版本的发布说明
+│   └── rules/                      # 特定AI工具（如Cursor）的规则
+├── docs/                           # 项目文档（由人类和AI共同维护）
+│   ├── decisions/                  # 决策记录
+│   │   └── YYYY/{SEQ}_{TITLE}.md   # 单个决策记录
+│   ├── debts/                      # 技术债务跟踪
+│   │   └── {DEBT_TITLE}.md         # 单个技术债务记录
 │   ├── metrics/                    # 项目健康指标
 │   │   ├── performance-metrics.md  # 性能基准和目标
 │   │   ├── code-quality-metrics.md # 代码质量评估
 │   │   └── test-coverage.md        # 测试覆盖率统计
-│   └── debt/                       # 技术债务跟踪
-│       └── {ISSUE_TITLE}.md        # 单个技术债务记录
-├── docs/                           # 面向用户的文档
-│   ├── architecture/               # 架构文档
-│   │   ├── decisions/              # 架构决策记录 (ADRs)
-│   │   ├── diagrams/               # 系统图表
-│   │   └── overview.md             # 高级架构概述
-│   ├── specifications/             # 详细技术规范
+│   ├── specs/                      # 技术规范
+│   │   ├── architecture.md         # 架构设计
+│   │   ├── coding-standards.md     # 编码指南
+│   │   ├── db-schema.md            # 数据库模式
+│   │   ├── diagrams.md             # 系统图表
+│   │   ├── documentation-standards.md # 文档格式规则
+│   │   ├── interfaces.md           # 外部接口
+│   │   └── testing-standards.md    # 测试方法和要求
 │   ├── guides/                     # 开发和使用指南
 │   └── HISTORY.md                  # 项目历史和变更日志
 ├── src/                            # 源代码
 ├── tests/                          # 测试代码
+├── CLAUDE.md                       # Claude特定指令
 └── README.md                       # 面向用户的项目概述
 ```
 
@@ -62,18 +58,18 @@ project-root/
 
 1. **开始全面的上下文收集**：
    - 你必须首先阅读 README.md 和 CLAUDE.zh.md
-   - 你必须查看 .agent/context/overview.md 以了解项目范围的上下文
-   - 你必须检查 .agent/context/components/ 中的相关组件文档
-   - 你必须查看 .agent/memory/manual_changes.md 了解最近的人工修改
-   - 你必须查看 .agent/memory/experience/ 中的相关经验文档
-   - 你必须评估 .agent/debt/ 中的相关技术债务
+   - 你必须查看 docs/specs/ 目录以了解项目范围的上下文
+   - 你必须检查 docs/specs/architecture.md 和 docs/specs/interfaces.md
+   - 你必须查看 docs/decisions/ 了解最近的决策和更改
+   - 你必须查看 .agent/experiences/ 中的相关经验文档
+   - 你必须评估 docs/debts/ 中的相关技术债务
 
 2. **全面记录你的工作**：
    - 你必须在进行代码更改时更新适当的文档
-   - 你必须在 .agent/context/components/{component_name}.md 中创建/更新组件文档
-   - 你必须使用既定的 ADR 格式在 docs/architecture/decisions/ 中记录架构决策
+   - 你必须在必要时更新或创建 docs/specs/ 中的技术规范
+   - 你必须使用既定格式在 docs/decisions/ 中记录架构决策
    - 你必须为重要更改更新 HISTORY.md
-   - 你必须在 .agent/memory/tasks/YYYY-MM/DD_{SEQ}.md 中创建任务记录，记录：
+   - 你必须在 .agent/tasks/YYYY-MM/DD_{SEQ}.md 中创建任务记录，记录：
      * 任务描述和目标
      * 考虑的实施方法
      * 做出的决定及其理由
@@ -81,52 +77,52 @@ project-root/
      * 遇到的问题和解决方案
 
 3. **按既定标准实现**：
-   - 你必须遵循 .agent/rules/coding-standards.md 中的编码标准
-   - 你必须遵守 .agent/rules/documentation-standards.md 中的文档标准
+   - 你必须遵循 docs/specs/coding-standards.md 中的编码标准
+   - 你必须遵守 docs/specs/documentation-standards.md 中的文档标准
    - 你必须保持一致的文件和目录组织
    - 你必须在存在时使用现有的模式和方法
    - 你必须确保所有代码在任务完成前通过 linting 和测试
 
 4. **考虑长期影响**：
-   - 当解决方案不是最优时，你必须在 .agent/debt/{ISSUE_TITLE}.md 中记录技术债务，包括：
+   - 当解决方案不是最优时，你必须在 docs/debts/{DEBT_TITLE}.md 中记录技术债务，包括：
      * 问题描述
      * 影响评估
      * 建议的解决方案
      * 优先级和时间表
    - 你必须在适当时提出重构机会
-   - 当更改影响系统性能时，你必须更新 .agent/metrics/ 中的指标文档
+   - 当更改影响系统性能时，你必须更新 docs/metrics/ 中的指标文档
    - 你必须考虑你编写的代码的未来维护者
 
 ### 特定任务强制性要求
 
 #### 对于新功能
 
-1. 你必须使用 .agent/tasks/ 中的任务模板作为实施框架
-2. 你必须在 docs/architecture/diagrams/ 中记录组件交互
-3. 如果功能影响项目范围的理解，你必须更新 .agent/context/overview.md
-4. 你必须为新组件在 .agent/context/components/ 中创建组件文档
-5. 你必须为任何公共接口更新 .agent/context/interfaces.md
+1. 你必须使用 .agent/tasks/ 中的以往任务记录作为实施方法参考
+2. 你必须在 docs/specs/diagrams.md 中记录组件交互
+3. 如果功能影响项目范围的理解，你必须更新 docs/specs/architecture.md
+4. 你必须为新组件创建或更新技术规范
+5. 你必须为任何公共接口更新 docs/specs/interfaces.md
 6. 你必须为新功能实现全面的测试
-7. 如果它是计划发布的一部分，你必须在 .agent/memory/releases/ 中记录该功能
+7. 如果它是计划发布的一部分，你必须在 .agent/releases/ 中记录该功能
 
 #### 对于错误修复
 
-1. 你必须在提交消息和 .agent/memory/experience/ 中记录根本原因
+1. 你必须在提交消息和 .agent/experiences/ 中记录根本原因
 2. 你必须更新测试以防止回归并验证修复
 3. 你必须在 HISTORY.md 中记录重要的修复
-4. 你必须更新相关组件文档以澄清行为
-5. 你必须评估错误是否表明存在更系统性的问题，并在适当时在 .agent/debt/ 中记录
+4. 你必须更新相关技术规范以澄清行为
+5. 你必须评估错误是否表明存在更系统性的问题，并在适当时在 docs/debts/ 中记录
 
 #### 对于重构
 
-1. 你必须在 docs/architecture/decisions/ 中创建 ADR 解释更改，包括：
+1. 你必须在 docs/decisions/ 中创建决策记录解释更改，包括：
    - 上下文和问题描述
    - 决策因素和约束
    - 考虑的替代方案
    - 决策结果和后果
-2. 你必须更新组件文档以反映新结构
+2. 你必须更新技术规范以反映新结构
 3. 你必须确保重构后所有测试通过
-4. 你必须更新 .agent/metrics/ 中的相关指标文档
+4. 你必须更新 docs/metrics/ 中的相关指标文档
 5. 你必须验证接口保持兼容或记录破坏性更改
 
 ## 开发标准
@@ -156,13 +152,13 @@ project-root/
 - 识别潜在的性能瓶颈。
 - 建议更高效的数据结构或算法。
 - 检查循环和递归实现的效率。
-- 监控并更新 .agent/metrics/performance-metrics.md 中的性能指标。
+- 监控并更新 docs/metrics/performance-metrics.md 中的性能指标。
 
 #### 开发维护负担
 - 评估每个依赖项的必要性。
 - 考虑依赖项的维护状态和安全风险。
 - 在适当时建议更轻量或更现代的替代方案。
-- 在 .agent/debt/ 中记录维护挑战。
+- 在 docs/debts/ 中记录维护挑战。
 
 ### 3. 文档
 

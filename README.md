@@ -45,27 +45,27 @@ LLMs 本质是一个与 CPU 类似的数字化处理器，接收信息输入，�
 
 以下是一些 high level 的思路：
 
-- 在 project-root 下，维护一个 `.agent` 目录，用于存放所有与 AI/Agent 相关的文件，类似于 Cursor 的 `.cursor` 目录，在这个目录下：
-  - `context` 目录，用于存放所有与项目相关的上下文信息，包括：
-    - 项目概述：`overview.md`，描述项目想要实现的目标、约束、以及项目当前的架构；而 `/README.md` 则是面向终端用户的；
-    - 项目历史：`history.md`，记录项目所有重要的决策，包括决策的背景、理由、以及决策后的结果；
-    - 接口文档：`interfaces.md`，描述和记录所有对外的接口；
-    - 组件文档：`components.md`，记录所有内部组件的接口、实现、以及使用方法；
-  - `rules` 目录，用于存放所有与项目相关的规则，包括：
-    - 编码规范：`coding-standards.md`，AI 应当遵守的编码规范；
-    - 文档规范：`documentation-standards.md`，AI 应当遵守的文档格式规范；
-    - 测试规范：`testing-standards.md`，AI 应当实现和需要跑通的测试标准；
-  - `memory` 目录，次目录只由 AI/Agent 维护，用于记录所有与项目相关的带有时间刻度的上下文和历史信息，包括：
-    - `tasks` 目录：每次执行的任务信息，时间、总结人类的 prompt 和 AI 执行的工作结果与反思信息 —— 文件格式为 `YYYY-MM/DD_{FOUR_DIGIT_SEQUENCE_NUMBER}.md`；
-    - `experience` 目录：AI 执行任务时犯的错误、碰到的问题的总结与反思 —— 文件格式为 `YYYY-MM/{EXPERIENCE_TITLE_SLUG}.md`，类似的问题在一个文件中合并；
-    - `releases` 目录：每个版本的信息，包括发布日期、版本号、发布说明等 —— 文件格式为 `YYYY-MM/v{VERSION_NUMBER}.md`；
-  - `metrics` 目录，用于存放项目当前的各类技术指标，需要包括原因和潜在的解决方法，包括：
+- `/docs/` 目录，由人类和 AI 共同维护，以传统方式存放项目的开发文档
+  - `decisions/`，存放所有与项目相关的决策记录，包括决策的背景、理由、以及决策后的结果 —— 文件格式为 `YYYY/{THREE_DIGIT_SEQUENCE_NUMBER}_{DECISION_TITLE_SLUG}.md`；
+  - `debt/` 目录，用于存放项目当前的技术债务以及重构的机会 —— 文件格式为 `{DEBT_TITLE_SLUG}.md`。
+  - `metrics/` 目录，用于存放项目当前的各类技术指标，需要包括原因和潜在的解决方法，包括：
     - `performance-metrics.md`，性能指标；
     - `code-quality-metrics.md`，代码质量指标；
     - `test-coverage.md`，测试覆盖率指标；
-  - `debt` 目录，用于存放项目当前的技术债务以及重构的机会 —— 文件格式为 `{DEBT_TITLE_SLUG}.md`。
-- 需要让 LLMs 对于全局目标和规范约束有充分的理解
-- 在开发过程中，需要让 LLMs 在 `.agent/memory/` 目录下留下可以给自己将来使用的记忆；并不断地思考和反思，更新相应的 `.agent` 目录下的文件
-- 即时将相应的内容可以保存到各个 agent 的目录和文件下，比如：
-  - 在 `.cursor/rules/` 目录下，保存所有 Cursor 需要用到的规则；
-  - 在 `/CLAUDE.md` 文件中，保存所有 Claude 需要用到的全局 prompt；
+  - `specs/`，存放所有与项目相关的技术规范，包括：
+    - `architecture.md`，架构设计；
+    - `coding-standards.md`：编码规范；
+    - `db-schema.md`：数据库 schema；
+    - `diagrams.md`，系统图表；
+    - `documentation-standards.md`：文档格式规范；
+    - `interfaces.md`：对外接口；
+    - `testing-standards.md`：测试标准；
+- 由 AI 维护一个 `/.agent/` 目录，用于存放所有 AI/Agent 生成、以及 AI/Agent 今后需要使用的相关文件：
+  - `tasks/` 目录：每次执行的任务信息，时间、总结人类的 prompt 和 AI 执行的工作结果与反思信息 —— 文件格式为 `YYYY-MM/DD_{FOUR_DIGIT_SEQUENCE_NUMBER}.md`；
+  - `experiences/` 目录：AI 执行任务时犯的错误、碰到的问题的总结与反思 —— 文件格式为 `YYYY-MM/{EXPERIENCE_TITLE_SLUG}.md`，类似的问题在一个文件中合并；
+  - `releases/` 目录：每个版本的信息，包括发布日期、版本号、发布说明等 —— 文件格式为 `YYYY-MM/v{VERSION_NUMBER}.md`；
+- 需要让 LLMs 对于全局目标和规范约束有充分的理解；
+- 在开发过程中，需要让 LLMs 在 `/.agent/` 目录下留下可以给自己将来使用的记忆，并不断地思考和反思，更新相应的 `/.agent/` 和 `/docs/` 目录下的文件；
+- 同时，还需要将相应的内容保存或更新到以下几个 agent 的目录，比如：
+  - 在 `/.agent/rules/` 目录下，保存所有 [Cursor Editor](https://www.cursor.com/) 需要用到的规则；
+  - 在 `/CLAUDE.md` 文件中，保存所有 [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview) 需要用到的全局 prompt。

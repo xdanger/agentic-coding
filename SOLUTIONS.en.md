@@ -14,36 +14,31 @@ Expand upon the existing `.agent` directory structure with the following improve
 
 ```
 project-root/
-├── .agent/                         # Agent-specific resources
-│   ├── context/                    # Global context and understanding
-│   │   ├── overview.md             # Project-wide context and technical architecture
-│   │   ├── interfaces.md           # API and interface documentation
-│   │   └── components/             # Component-specific context
-│   │       └── {component_name}.md # Individual component documentation
-│   ├── rules/                      # Standards and conventions
-│   │   ├── coding-standards.md     # Language-specific coding guidelines
-│   │   ├── documentation-standards.md # Documentation format rules
-│   │   └── testing-standards.md    # Testing approach and coverage requirements
-│   ├── memory/                     # Persistent agent memory
-│   │   ├── tasks/                  # Task execution history
-│   │   │   └── YYYY-MM/DD_{SEQ}.md # Individual task records
-│   │   ├── experience/             # Lessons learned and reflections
-│   │   │   └── YYYY-MM/{TITLE}.md  # Experience records by topic
-│   │   ├── releases/               # Version release information
-│   │   │   └── YYYY-MM/v{VER}.md   # Version-specific release notes
-│   │   └── manual_changes.md       # Record of human-made changes
+├── .agent/                         # AI/Agent-specific resources (maintained by AI)
+│   ├── tasks/                      # Task execution history
+│   │   └── YYYY-MM/DD_{SEQ}.md     # Individual task records
+│   ├── experiences/                # Lessons learned and reflections
+│   │   └── YYYY-MM/{TITLE}.md      # Experience records by topic
+│   ├── releases/                   # Version release information
+│   │   └── YYYY-MM/v{VER}.md       # Version-specific release notes
+│   └── rules/                      # Rules for specific AI tools like Cursor
+├── docs/                           # Project documentation (maintained by humans and AI)
+│   ├── decisions/                  # Decision records
+│   │   └── YYYY/{SEQ}_{TITLE}.md   # Individual decision records
+│   ├── debts/                      # Technical debt tracking
+│   │   └── {DEBT_TITLE}.md         # Individual technical debt records
 │   ├── metrics/                    # Project health metrics
 │   │   ├── performance-metrics.md  # Performance benchmarks and goals
 │   │   ├── code-quality-metrics.md # Code quality assessment
 │   │   └── test-coverage.md        # Test coverage statistics
-│   └── debt/                       # Technical debt tracking
-│       └── {ISSUE_TITLE}.md        # Individual technical debt records
-├── docs/                           # User-facing documentation
-│   ├── architecture/               # Architecture documentation
-│   │   ├── decisions/              # Architecture Decision Records (ADRs)
-│   │   ├── diagrams/               # System diagrams
-│   │   └── overview.md             # High-level architecture overview
-│   ├── specifications/             # Detailed technical specifications
+│   ├── specs/                      # Technical specifications
+│   │   ├── architecture.md         # Architecture design
+│   │   ├── coding-standards.md     # Coding guidelines
+│   │   ├── db-schema.md            # Database schema
+│   │   ├── diagrams.md             # System diagrams
+│   │   ├── documentation-standards.md # Documentation format rules
+│   │   ├── interfaces.md           # External interfaces
+│   │   └── testing-standards.md    # Testing approach and requirements
 │   ├── guides/                     # Development and usage guides
 │   └── HISTORY.md                  # Project history and changelog
 ├── src/                            # Source code
@@ -66,14 +61,14 @@ Create standardized configuration files for different AI agent tools:
 
 Develop robust documentation to provide AI agents with comprehensive project understanding:
 
-1. Create `.agent/context/overview.md` with:
+1. Create `docs/specs/architecture.md` with:
    - Project vision and purpose
    - System architecture overview
    - Key design principles and constraints
    - Critical business rules and requirements
 
-2. Establish component documentation templates in `.agent/context/components/`:
-   - Purpose and responsibilities
+2. Document component details in `docs/specs/`:
+   - Purpose and responsibilities of each component
    - Interfaces and dependencies
    - Implementation details
    - Usage examples
@@ -82,15 +77,15 @@ Develop robust documentation to provide AI agents with comprehensive project und
 
 Implement mechanisms for maintaining long-term history and context:
 
-1. Set up automatic task recording in `.agent/memory/tasks/` to capture:
+1. Set up automatic task recording in `.agent/tasks/` to capture:
    - Task description and goals
    - Implementation approaches considered
    - Decisions made and rationales
    - Changes implemented
    - Issues encountered and resolutions
 
-2. Create a manual change tracking system in `.agent/memory/manual_changes.md`:
-   - Date and author of changes
+2. Create a decision recording system in `docs/decisions/`:
+   - Date and author of decisions
    - Description of changes made
    - Motivation and rationale
    - Impact on existing components
@@ -104,7 +99,7 @@ Implement mechanisms for maintaining long-term history and context:
 
 ### 3.1 Coding Standards
 
-Develop comprehensive coding standards in `.agent/rules/coding-standards.md`:
+Develop comprehensive coding standards in `docs/specs/coding-standards.md`:
 
 1. Language-specific conventions (syntax, formatting, naming)
 2. Architecture patterns and design principles
@@ -114,7 +109,7 @@ Develop comprehensive coding standards in `.agent/rules/coding-standards.md`:
 
 ### 3.2 Documentation Standards
 
-Create documentation standards in `.agent/rules/documentation-standards.md`:
+Create documentation standards in `docs/specs/documentation-standards.md`:
 
 1. Comment formats and requirements
 2. API documentation templates
@@ -124,7 +119,7 @@ Create documentation standards in `.agent/rules/documentation-standards.md`:
 
 ### 3.3 Testing Standards
 
-Establish testing standards in `.agent/rules/testing-standards.md`:
+Establish testing standards in `docs/specs/testing-standards.md`:
 
 1. Test coverage requirements
 2. Testing methodologies (unit, integration, e2e)
@@ -138,7 +133,7 @@ Establish testing standards in `.agent/rules/testing-standards.md`:
 
 Create a system for tracking and managing technical debt:
 
-1. Standardized debt documentation format in `.agent/debt/{ISSUE_TITLE}.md`:
+1. Standardized debt documentation format in `docs/debt/{DEBT_TITLE}.md`:
    - Problem description
    - Impact assessment
    - Proposed solutions
@@ -153,17 +148,17 @@ Create a system for tracking and managing technical debt:
 
 Establish metrics for monitoring project health:
 
-1. Performance metrics in `.agent/metrics/performance-metrics.md`:
+1. Performance metrics in `docs/metrics/performance-metrics.md`:
    - Response time benchmarks
    - Resource utilization stats
    - Throughput measurements
 
-2. Code quality metrics in `.agent/metrics/code-quality-metrics.md`:
+2. Code quality metrics in `docs/metrics/code-quality-metrics.md`:
    - Complexity scores
    - Duplication percentage
    - Static analysis results
 
-3. Test coverage metrics in `.agent/metrics/test-coverage.md`:
+3. Test coverage metrics in `docs/metrics/test-coverage.md`:
    - Line coverage percentages
    - Branch coverage statistics
    - Critical path testing status
@@ -175,10 +170,10 @@ Establish metrics for monitoring project health:
 Develop standardized workflows for agent task execution:
 
 1. Pre-task context gathering:
-   - Review overview.md and relevant component docs
-   - Check manual_changes.md for recent human modifications
-   - Review related experience documents
-   - Assess relevant technical debt
+   - Review docs/specs/ and README.md
+   - Check docs/decisions/ for recent decisions
+   - Review related experience documents in .agent/experiences/
+   - Assess relevant technical debt in docs/debt/
 
 2. Task execution process:
    - Task planning and approach documentation
@@ -187,10 +182,10 @@ Develop standardized workflows for agent task execution:
    - Documentation updates
 
 3. Post-task reflection:
-   - Update experience documents
-   - Record task history
-   - Identify and document technical debt
-   - Update metrics
+   - Update experience documents in .agent/experiences/
+   - Record task history in .agent/tasks/
+   - Identify and document technical debt in docs/debt/
+   - Update metrics in docs/metrics/
 
 ### 5.2 Multi-Agent Collaboration Model
 
