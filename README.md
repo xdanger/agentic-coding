@@ -69,3 +69,34 @@ LLMs 本质是一个与 CPU 类似的数字化处理器，接收信息输入，�
 - 同时，还需要将相应的内容保存或更新到以下几个 agent 的目录，比如：
   - 在 `/.agent/rules/` 目录下，保存所有 [Cursor Editor](https://www.cursor.com/) 需要用到的规则；
   - 在 `/CLAUDE.md` 文件中，保存所有 [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview) 需要用到的全局 prompt。
+
+## 工具
+
+### 文档标准检查器
+
+为了确保文档遵循规范的文档标准，我们提供了一个文档标准检查工具：
+
+- `/src/doc_linter.py`：文档标准检查工具，可以检查文件名、目录名、文件引用格式、代码块格式等是否符合规范。
+
+使用方法：
+
+```bash
+# 检查所有文档
+python3 ./src/doc_linter.py
+
+# 检查特定文档
+python3 ./src/doc_linter.py --file path/to/your/document.md
+
+# 严格模式（将警告视为错误）
+python3 ./src/doc_linter.py --strict
+```
+
+此工具会检查以下内容：
+
+1. 文件命名规范（小写，连字符分隔）
+2. 目录命名规范（小写，连字符分隔，集合使用复数形式）
+3. 文件引用格式（使用反引号包围）
+4. 代码块格式（指定语言，纯文本使用 `plaintext`）
+5. Markdown 结构（标题层级，列表样式）
+
+当发现不符合规范的地方时，会输出相应的错误或警告信息。在 GitHub 上，我们通过 GitHub Actions 自动运行此工具，确保所有的文档变更都符合规范。

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Pre-commit hook for document linting
+# Install this hook by copying it to .git/hooks/pre-commit
+
+# Get the repository root
+REPO_ROOT=$(git rev-parse --show-toplevel)
+
+# Get staged markdown files
+staged_md_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.md$')
+
+# Exit successfully if no Markdown files are staged
+if [ -z "$staged_md_files" ]; then
+  exit 0
+fi
+
+echo "Running document linter on staged Markdown files..."
+
+# Check each staged markdown file
+for file in $staged_md_files; do
+  if [[ "$file" == .github/* ]]; then
+    echo "Skipping $file (in .github directory)"
+    continue
+  fi
+  
+  echo "Checking $file..."
+  python3 "$REPO_ROOT/src/doc_linter.py" --file "$REPO_ROOT/$file"
+  
+  if [ $? -ne 0 ]; then
+    echo "ERROR: Document linting failed for $file"
+    echo "Please fix the errors before committing."
+    exit 1
+  fi
+done
+
+echo "All checks passed!"
+exit 0

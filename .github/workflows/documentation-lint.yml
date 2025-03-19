@@ -1,0 +1,35 @@
+name: Documentation Linter
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**/*.md'
+      - '.github/workflows/documentation-lint.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '**/*.md'
+      - '.github/workflows/documentation-lint.yml'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Run Documentation Linter
+        run: |
+          chmod +x ./src/doc_linter.py
+          python3 ./src/doc_linter.py
+        
+      - name: Check for Errors
+        if: ${{ failure() }}
+        run: |
+          echo "Documentation linting failed. Please check the errors above and fix them."
+          exit 1
