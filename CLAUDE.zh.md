@@ -19,37 +19,37 @@
 
 ```txt
 project-root/
-├── .agent/                         # AI/代理特定资源（由AI维护）
-│   ├── tasks/                      # 任务执行历史
-│   │   └── YYYY-MM/DD_{SEQ}.md     # 单个任务记录
-│   ├── experiences/                # 经验教训和反思
-│   │   └── YYYY-MM/{TITLE}.md      # 按主题分类的经验记录
-│   ├── releases/                   # 版本发布信息
-│   │   └── YYYY-MM/v{VER}.md       # 特定版本的发布说明
-│   └── rules/                      # 特定AI工具（如Cursor）的规则
-├── docs/                           # 项目文档（由人类和AI共同维护）
-│   ├── decisions/                  # 决策记录
-│   │   └── YYYY/{SEQ}_{TITLE}.md   # 单个决策记录
-│   ├── debts/                      # 技术债务跟踪
-│   │   └── {DEBT_TITLE}.md         # 单个技术债务记录
-│   ├── metrics/                    # 项目健康指标
-│   │   ├── performance-metrics.md  # 性能基准和目标
-│   │   ├── code-quality-metrics.md # 代码质量评估
-│   │   └── test-coverage.md        # 测试覆盖率统计
-│   ├── specs/                      # 技术规范
-│   │   ├── architecture.md         # 架构设计
-│   │   ├── coding-standards.md     # 编码指南
-│   │   ├── db-schema.md            # 数据库模式
-│   │   ├── diagrams.md             # 系统图表
+├── .agent/                            # AI/代理特定资源（由AI维护）
+│   ├── tasks/                         # 任务执行历史
+│   │   └── YYYY-MM/DD_{SEQ}.md        # 单个任务记录
+│   ├── reflections/                   # 经验教训和反思
+│   │   └── YYYY-MM/{TITLE}.md         # 按主题分类的反思记录
+│   ├── releases/                      # 版本发布信息
+│   │   └── YYYY-MM/v{VER}.md          # 特定版本的发布说明
+│   └── rules/                         # 特定AI工具（如Cursor）的规则
+├── docs/                              # 项目文档（由人类和AI共同维护）
+│   ├── debts/                         # 技术债务跟踪
+│   │   └── {DEBT_TITLE}.md            # 单个技术债务记录
+│   ├── decisions/                     # 决策记录
+│   │   └── YYYY/{SEQ}_{TITLE}.md      # 单个决策记录
+│   ├── metrics/                       # 项目健康指标
+│   │   ├── performance-metrics.md     # 性能基准和目标
+│   │   ├── code-quality-metrics.md    # 代码质量评估
+│   │   └── test-coverage.md           # 测试覆盖率统计
+│   ├── specs/                         # 技术规范
+│   │   ├── architecture.md            # 架构设计
+│   │   ├── coding-standards.md        # 编码指南
+│   │   ├── db-schema.md               # 数据库模式
+│   │   ├── diagrams.md                # 系统图表
 │   │   ├── documentation-standards.md # 文档格式规则
-│   │   ├── interfaces.md           # 外部接口
-│   │   └── testing-standards.md    # 测试方法和要求
-│   ├── guides/                     # 开发和使用指南
-│   └── HISTORY.md                  # 项目历史和变更日志
-├── src/                            # 源代码
-├── tests/                          # 测试代码
-├── CLAUDE.md                       # Claude特定指令
-└── README.md                       # 面向用户的项目概述
+│   │   ├── interfaces.md              # 外部接口
+│   │   └── testing-standards.md       # 测试方法和要求
+│   ├── guides/                        # 开发和使用指南
+│   └── HISTORY.md                     # 项目历史和变更日志
+├── src/                               # 源代码
+├── tests/                             # 测试代码
+├── CLAUDE.md                          # Claude特定指令
+└── README.md                          # 面向用户的项目概述
 ```
 
 ## 强制性工作流程要求
@@ -61,7 +61,7 @@ project-root/
    - 你必须查看 docs/specs/ 目录以了解项目范围的上下文
    - 你必须检查 docs/specs/architecture.md 和 docs/specs/interfaces.md
    - 你必须查看 docs/decisions/ 了解最近的决策和更改
-   - 你必须查看 .agent/experiences/ 中的相关经验文档
+   - 你必须查看 .agent/reflections/ 中的相关反思文档
    - 你必须评估 docs/debts/ 中的相关技术债务
 
 2. **全面记录你的工作**：
@@ -70,11 +70,11 @@ project-root/
    - 你必须使用既定格式在 docs/decisions/ 中记录架构决策
    - 你必须为重要更改更新 HISTORY.md
    - 你必须在 .agent/tasks/YYYY-MM/DD_{SEQ}.md 中创建任务记录，记录：
-     * 任务描述和目标
-     * 考虑的实施方法
-     * 做出的决定及其理由
-     * 实现的更改
-     * 遇到的问题和解决方案
+     - 任务描述和目标
+     - 考虑的实施方法
+     - 做出的决定及其理由
+     - 实现的更改
+     - 遇到的问题和解决方案
 
 3. **按既定标准实现**：
    - 你必须遵循 docs/specs/coding-standards.md 中的编码标准
@@ -85,10 +85,10 @@ project-root/
 
 4. **考虑长期影响**：
    - 当解决方案不是最优时，你必须在 docs/debts/{DEBT_TITLE}.md 中记录技术债务，包括：
-     * 问题描述
-     * 影响评估
-     * 建议的解决方案
-     * 优先级和时间表
+     - 问题描述
+     - 影响评估
+     - 建议的解决方案
+     - 优先级和时间表
    - 你必须在适当时提出重构机会
    - 当更改影响系统性能时，你必须更新 docs/metrics/ 中的指标文档
    - 你必须考虑你编写的代码的未来维护者
@@ -107,7 +107,7 @@ project-root/
 
 #### 对于错误修复
 
-1. 你必须在提交消息和 .agent/experiences/ 中记录根本原因
+1. 你必须在提交消息和 .agent/reflections/ 中记录根本原因
 2. 你必须更新测试以防止回归并验证修复
 3. 你必须在 HISTORY.md 中记录重要的修复
 4. 你必须更新相关技术规范以澄清行为
@@ -138,23 +138,27 @@ project-root/
 ### 2. 代码审查和重构
 
 #### 未使用的依赖项
+
 - 检查代码中是否使用了所有依赖项/库。
 - 识别导入但未使用的模块。
 - 建议删除未使用的依赖项。
 
 #### 代码冗余
+
 - 搜索重复功能并严格应用 DRY 原则。
 - 识别可以合并或简化的函数。
 - 将重复的代码模式提取为可重用的抽象。
 - 检查过时的注释或文档。
 
 #### 性能优化
+
 - 识别潜在的性能瓶颈。
 - 建议更高效的数据结构或算法。
 - 检查循环和递归实现的效率。
 - 监控并更新 docs/metrics/performance-metrics.md 中的性能指标。
 
 #### 开发维护负担
+
 - 评估每个依赖项的必要性。
 - 考虑依赖项的维护状态和安全风险。
 - 在适当时建议更轻量或更现代的替代方案。

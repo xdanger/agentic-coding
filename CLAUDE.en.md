@@ -19,37 +19,37 @@ Respect and maintain this project structure. Every file and directory has a spec
 
 ```txt
 project-root/
-├── .agent/                         # AI/Agent-specific resources (maintained by AI)
-│   ├── tasks/                      # Task execution history
-│   │   └── YYYY-MM/DD_{SEQ}.md     # Individual task records
-│   ├── experiences/                # Lessons learned and reflections
-│   │   └── YYYY-MM/{TITLE}.md      # Experience records by topic
-│   ├── releases/                   # Version release information
-│   │   └── YYYY-MM/v{VER}.md       # Version-specific release notes
-│   └── rules/                      # Rules for specific AI tools like Cursor
-├── docs/                           # Project documentation (maintained by humans and AI)
-│   ├── decisions/                  # Decision records
-│   │   └── YYYY/{SEQ}_{TITLE}.md   # Individual decision records
-│   ├── debts/                      # Technical debt tracking
-│   │   └── {DEBT_TITLE}.md         # Individual technical debt records
-│   ├── metrics/                    # Project health metrics
-│   │   ├── performance-metrics.md  # Performance benchmarks and goals
-│   │   ├── code-quality-metrics.md # Code quality assessment
-│   │   └── test-coverage.md        # Test coverage statistics
-│   ├── specs/                      # Technical specifications
-│   │   ├── architecture.md         # Architecture design
-│   │   ├── coding-standards.md     # Coding guidelines
-│   │   ├── db-schema.md            # Database schema
-│   │   ├── diagrams.md             # System diagrams
+├── .agent/                            # AI/Agent-specific resources (maintained by AI)
+│   ├── tasks/                         # Task execution history
+│   │   └── YYYY-MM/DD_{SEQ}.md        # Individual task records
+│   ├── reflections/                   # Lessons learned and reflections
+│   │   └── YYYY-MM/{TITLE}.md         # Reflection records by topic
+│   ├── releases/                      # Version release information
+│   │   └── YYYY-MM/v{VER}.md          # Version-specific release notes
+│   └── rules/                         # Rules for specific AI tools like Cursor
+├── docs/                              # Project documentation (maintained by humans and AI)
+│   ├── debts/                         # Technical debt tracking
+│   │   └── {DEBT_TITLE}.md            # Individual technical debt records
+│   ├── decisions/                     # Decision records
+│   │   └── YYYY/{SEQ}_{TITLE}.md      # Individual decision records
+│   ├── metrics/                       # Project health metrics
+│   │   ├── performance-metrics.md     # Performance benchmarks and goals
+│   │   ├── code-quality-metrics.md    # Code quality assessment
+│   │   └── test-coverage.md           # Test coverage statistics
+│   ├── specs/                         # Technical specifications
+│   │   ├── architecture.md            # Architecture design
+│   │   ├── coding-standards.md        # Coding guidelines
+│   │   ├── db-schema.md               # Database schema
+│   │   ├── diagrams.md                # System diagrams
 │   │   ├── documentation-standards.md # Documentation format rules
-│   │   ├── interfaces.md           # External interfaces
-│   │   └── testing-standards.md    # Testing approach and requirements
-│   ├── guides/                     # Development and usage guides
-│   └── HISTORY.md                  # Project history and changelog
-├── src/                            # Source code
-├── tests/                          # Test code
-├── CLAUDE.md                       # Claude-specific instructions 
-└── README.md                       # Project overview for users
+│   │   ├── interfaces.md              # External interfaces
+│   │   └── testing-standards.md       # Testing approach and requirements
+│   ├── guides/                        # Development and usage guides
+│   └── HISTORY.md                     # Project history and changelog
+├── src/                               # Source code
+├── tests/                             # Test code
+├── CLAUDE.md                          # Claude-specific instructions
+└── README.md                          # Project overview for users
 ```
 
 ## Mandatory Workflow Requirements
@@ -61,7 +61,7 @@ project-root/
    - You MUST review docs/specs/ directory to understand project-wide context
    - You MUST examine docs/specs/architecture.md and docs/specs/interfaces.md
    - You MUST check docs/decisions/ for recent decisions and changes
-   - You MUST review relevant experience documents in .agent/experiences/
+   - You MUST review relevant reflection documents in .agent/reflections/
    - You MUST assess relevant technical debt in docs/debts/
 
 2. **Document Your Work Thoroughly**:
@@ -70,11 +70,11 @@ project-root/
    - You MUST record architectural decisions in docs/decisions/ using the established format
    - You MUST update HISTORY.md for significant changes
    - You MUST create task records in .agent/tasks/YYYY-MM/DD_{SEQ}.md documenting:
-     * Task description and goals
-     * Implementation approaches considered
-     * Decisions made and rationales
-     * Changes implemented
-     * Issues encountered and resolutions
+     - Task description and goals
+     - Implementation approaches considered
+     - Decisions made and rationales
+     - Changes implemented
+     - Issues encountered and resolutions
 
 3. **Implement According to Established Standards**:
    - You MUST follow coding standards in docs/specs/coding-standards.md
@@ -85,10 +85,10 @@ project-root/
 
 4. **Consider Long-term Impact**:
    - You MUST document technical debt in docs/debts/{DEBT_TITLE}.md when solutions are not optimal, including:
-     * Problem description
-     * Impact assessment
-     * Proposed solutions
-     * Priority and timeline
+     - Problem description
+     - Impact assessment
+     - Proposed solutions
+     - Priority and timeline
    - You MUST suggest refactoring opportunities when appropriate
    - You MUST update metrics documents in docs/metrics/ when changes impact system performance
    - You MUST think about future maintainers of the code you write
@@ -107,7 +107,7 @@ project-root/
 
 #### For Bug Fixes
 
-1. You MUST document the root cause in the commit message and in .agent/experiences/
+1. You MUST document the root cause in the commit message and in .agent/reflections/
 2. You MUST update tests to prevent regression and verify the fix
 3. You MUST record the fix in HISTORY.md for significant bugs
 4. You MUST update relevant technical specs to clarify behavior
@@ -138,23 +138,27 @@ project-root/
 ### 2. Code Review and Refactoring
 
 #### Unused Dependencies
+
 - Check if all dependencies/libraries are used in the code.
 - Identify imported but unused modules.
 - Suggest removing unused dependencies.
 
 #### Code Redundancy
+
 - Search for duplicate functionality and apply the DRY principle rigorously.
 - Identify functions that can be merged or simplified.
 - Extract repeated code patterns into reusable abstractions.
 - Check for outdated comments or documentation.
 
 #### Performance Optimization
+
 - Identify potential performance bottlenecks.
 - Suggest more efficient data structures or algorithms.
 - Check efficiency of loops and recursive implementations.
 - Monitor and update performance metrics in docs/metrics/performance-metrics.md.
 
 #### Development Maintenance Burden
+
 - Evaluate the necessity of each dependency.
 - Consider the maintenance status and security risks of dependencies.
 - Suggest lighter or more modern alternatives where appropriate.

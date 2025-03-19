@@ -12,13 +12,13 @@ The Agentic Coding Framework aims to address the limitations of LLMs in software
 
 Expand upon the existing `.agent` directory structure with the following improvements:
 
-```
+```txt
 project-root/
 ├── .agent/                         # AI/Agent-specific resources (maintained by AI)
 │   ├── tasks/                      # Task execution history
 │   │   └── YYYY-MM/DD_{SEQ}.md     # Individual task records
-│   ├── experiences/                # Lessons learned and reflections
-│   │   └── YYYY-MM/{TITLE}.md      # Experience records by topic
+│   ├── reflections/                # Lessons learned and reflections
+│   │   └── YYYY-MM/{TITLE}.md      # Reflection records by topic
 │   ├── releases/                   # Version release information
 │   │   └── YYYY-MM/v{VER}.md       # Version-specific release notes
 │   └── rules/                      # Rules for specific AI tools like Cursor
@@ -172,8 +172,8 @@ Develop standardized workflows for agent task execution:
 1. Pre-task context gathering:
    - Review docs/specs/ and README.md
    - Check docs/decisions/ for recent decisions
-   - Review related experience documents in .agent/experiences/
-   - Assess relevant technical debt in docs/debt/
+   - Review related reflection documents in .agent/reflections/
+   - Assess relevant technical debt in docs/debts/
 
 2. Task execution process:
    - Task planning and approach documentation
@@ -182,9 +182,9 @@ Develop standardized workflows for agent task execution:
    - Documentation updates
 
 3. Post-task reflection:
-   - Update experience documents in .agent/experiences/
+   - Update reflection documents in .agent/reflections/
    - Record task history in .agent/tasks/
-   - Identify and document technical debt in docs/debt/
+   - Identify and document technical debt in docs/debts/
    - Update metrics in docs/metrics/
 
 ### 5.2 Multi-Agent Collaboration Model
@@ -205,21 +205,25 @@ Establish patterns for multiple agents to work collaboratively:
 ## 6. Implementation Timeline
 
 Phase 1 (Month 1): Foundation Setup
+
 - Establish basic directory structure
 - Create initial global context documents
 - Develop core coding and documentation standards
 
 Phase 2 (Month 2): Memory and Metrics
+
 - Implement task recording system
 - Establish metrics tracking mechanisms
 - Create technical debt documentation templates
 
 Phase 3 (Month 3): Workflow Refinement
+
 - Develop agent workflow processes
 - Create multi-agent collaboration protocols
 - Test and refine the framework
 
 Phase 4 (Month 4): Integration and Optimization
+
 - Integrate with existing development tools
 - Optimize context and memory management
 - Document best practices and lessons learned
