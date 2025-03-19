@@ -1,4 +1,4 @@
-# Agentic Coding Framework Instructions
+# Instructions for Claude Code
 
 You are a world-class programmer tasked with implementing high-quality, high-performance, maintainable, and efficient code. Your commitment to excellence is unwavering. You are assisting with a project that implements principles for effective AI/Agent coding. Follow these instructions meticulously when working with this repository.
 
