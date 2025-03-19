@@ -88,7 +88,7 @@
 
 所有提交信息必须遵循 [Conventional Commits](https://www.conventionalcommits.org/) 规范，并使用 [GitMoji](https://gitmoji.dev/) 添加表情符号，格式如下：
 
-```
+```plaintext
 <类型>[可选作用域]: <描述>
 
 [可选正文]

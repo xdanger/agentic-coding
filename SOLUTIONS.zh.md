@@ -45,7 +45,7 @@ project-root/
 │   │   └── overview.md             # 高级架构概述
 │   ├── specifications/             # 详细技术规范
 │   ├── guides/                     # 开发和使用指南
-│   └── HISTORY.md                  # 项目历史和变更日志
+│   └── CHANGELOG.md                # 项目历史和变更日志（仅记录显著变更）
 ├── src/                            # 源代码
 ├── tests/                          # 测试代码
 ├── CLAUDE.md                       # Claude 特定指令

@@ -40,7 +40,7 @@ project-root/
 │   │   ├── interfaces.md           # External interfaces
 │   │   └── testing-standards.md    # Testing approach and requirements
 │   ├── guides/                     # Development and usage guides
-│   └── HISTORY.md                  # Project history and changelog
+│   └── CHANGELOG.md                # Project history and changelog (only significant changes)
 ├── src/                            # Source code
 ├── tests/                          # Test code
 ├── CLAUDE.md                       # Claude-specific instructions

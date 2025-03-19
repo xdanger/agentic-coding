@@ -47,7 +47,7 @@ LLMs 本质是一个与 CPU 类似的数字化处理器，接收信息输入，�
 
 - `/docs/` 目录，由人类和 AI 共同维护，以传统方式存放项目的开发文档
   - `decisions/`，存放所有与项目相关的决策记录，包括决策的背景、理由、以及决策后的结果 —— 文件格式为 `YYYY/{THREE_DIGIT_SEQUENCE_NUMBER}_{DECISION_TITLE_SLUG}.md`；
-  - `debt/` 目录，用于存放项目当前的技术债务以及重构的机会 —— 文件格式为 `{DEBT_TITLE_SLUG}.md`。
+  - `debts/` 目录，用于存放项目当前的技术债务以及重构的机会 —— 文件格式为 `{DEBT_TITLE_SLUG}.md`。
   - `metrics/` 目录，用于存放项目当前的各类技术指标，需要包括原因和潜在的解决方法，包括：
     - `performance-metrics.md`，性能指标；
     - `code-quality-metrics.md`，代码质量指标；
@@ -62,7 +62,7 @@ LLMs 本质是一个与 CPU 类似的数字化处理器，接收信息输入，�
     - `testing-standards.md`：测试标准；
 - 由 AI 维护一个 `/.agent/` 目录，用于存放所有 AI/Agent 生成、以及 AI/Agent 今后需要使用的相关文件：
   - `tasks/` 目录：每次执行的任务信息，时间、总结人类的 prompt 和 AI 执行的工作结果与反思信息 —— 文件格式为 `YYYY-MM/DD_{FOUR_DIGIT_SEQUENCE_NUMBER}.md`；
-  - `experiences/` 目录：AI 执行任务时犯的错误、碰到的问题的总结与反思 —— 文件格式为 `YYYY-MM/{EXPERIENCE_TITLE_SLUG}.md`，类似的问题在一个文件中合并；
+  - `reflections/` 目录：AI 执行任务时犯的错误、碰到的问题的总结与反思 —— 文件格式为 `YYYY-MM/{REFLECTION_TITLE_SLUG}.md`，类似的问题在一个文件中合并；
   - `releases/` 目录：每个版本的信息，包括发布日期、版本号、发布说明等 —— 文件格式为 `YYYY-MM/v{VERSION_NUMBER}.md`；
 - 需要让 LLMs 对于全局目标和规范约束有充分的理解；
 - 在开发过程中，需要让 LLMs 在 `/.agent/` 目录下留下可以给自己将来使用的记忆，并不断地思考和反思，更新相应的 `/.agent/` 和 `/docs/` 目录下的文件；

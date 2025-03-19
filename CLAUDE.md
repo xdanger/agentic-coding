@@ -17,7 +17,7 @@ Always adhere to these six principles when working on this codebase:
 
 Respect and maintain this project structure. Every file and directory has a specific purpose:
 
-```txt
+```plaintext
 project-root/
 ├── .agent/                            # AI/Agent-specific resources (maintained by AI)
 │   ├── tasks/                         # Task execution history
@@ -45,10 +45,10 @@ project-root/
 │   │   ├── interfaces.md              # External interfaces
 │   │   └── testing-standards.md       # Testing approach and requirements
 │   ├── guides/                        # Development and usage guides
-│   └── HISTORY.md                     # Project history and changelog
+├── CHANGELOG.md                       # Project history and changelog (only significant changes)
 ├── src/                               # Source code
 ├── tests/                             # Test code
-├── CLAUDE.md                          # Claude-specific instructions
+├── CLAUDE.md                          # Instructions for Claude Code
 └── README.md                          # Project overview for users
 ```
 
@@ -57,19 +57,19 @@ project-root/
 ### For All Tasks
 
 1. **Begin with Comprehensive Context Gathering**:
-   - You MUST read README.md and CLAUDE.en.md first
-   - You MUST review docs/specs/ directory to understand project-wide context
-   - You MUST examine docs/specs/architecture.md and docs/specs/interfaces.md
-   - You MUST check docs/decisions/ for recent decisions and changes
-   - You MUST review relevant reflection documents in .agent/reflections/
-   - You MUST assess relevant technical debt in docs/debts/
+   - You MUST read `README.md` and `CLAUDE.md` first
+   - You MUST review `docs/specs/` directory to understand project-wide context
+   - You MUST examine `docs/specs/architecture.md` and `docs/specs/interfaces.md`
+   - You MUST check `docs/decisions/` for recent decisions and changes
+   - You MUST review relevant reflection documents in `.agent/reflections/`
+   - You MUST assess relevant technical debt in `docs/debts/`
 
 2. **Document Your Work Thoroughly**:
    - You MUST update appropriate documentation when making code changes
-   - You MUST update or create technical specs in docs/specs/ when necessary
-   - You MUST record architectural decisions in docs/decisions/ using the established format
-   - You MUST update HISTORY.md for significant changes
-   - You MUST create task records in .agent/tasks/YYYY-MM/DD_{SEQ}.md documenting:
+   - You MUST update or create technical specs in `docs/specs/` when necessary
+   - You MUST record architectural decisions in `docs/decisions/` using the established format
+   - You MUST update `/CHANGELOG.md`, but ONLY for significant changes
+   - You MUST create task records in `.agent/tasks/YYYY-MM/DD_{SEQ}.md` documenting:
      - Task description and goals
      - Implementation approaches considered
      - Decisions made and rationales
@@ -77,41 +77,41 @@ project-root/
      - Issues encountered and resolutions
 
 3. **Implement According to Established Standards**:
-   - You MUST follow coding standards in docs/specs/coding-standards.md
-   - You MUST adhere to documentation standards in docs/specs/documentation-standards.md
+   - You MUST follow coding standards in `docs/specs/coding-standards.md`
+   - You MUST adhere to documentation standards in `docs/specs/documentation-standards.md`
    - You MUST maintain consistent file and directory organization
    - You MUST use existing patterns and approaches when present
    - You MUST ensure all code passes linting and tests before considering a task complete
 
 4. **Consider Long-term Impact**:
-   - You MUST document technical debt in docs/debts/{DEBT_TITLE}.md when solutions are not optimal, including:
+   - You MUST document technical debt in `docs/debts/{DEBT_TITLE}.md` when solutions are not optimal, including:
      - Problem description
      - Impact assessment
      - Proposed solutions
      - Priority and timeline
    - You MUST suggest refactoring opportunities when appropriate
-   - You MUST update metrics documents in docs/metrics/ when changes impact system performance
+   - You MUST update metrics documents in `docs/metrics/` when changes impact system performance
    - You MUST think about future maintainers of the code you write
 
 ### Task-Specific Mandatory Requirements
 
 #### For New Features
 
-1. You MUST use prior task records in .agent/tasks/ as reference for implementation approach
-2. You MUST document component interactions in docs/specs/diagrams.md
-3. You MUST update docs/specs/architecture.md if the feature affects project-wide understanding
+1. You MUST use prior task records in `.agent/tasks/` as reference for implementation approach
+2. You MUST document component interactions in `docs/specs/diagrams.md`
+3. You MUST update `docs/specs/architecture.md` if the feature affects project-wide understanding
 4. You MUST create or update technical specs for new components
-5. You MUST update docs/specs/interfaces.md for any public interfaces
+5. You MUST update `docs/specs/interfaces.md` for any public interfaces
 6. You MUST implement comprehensive tests for the new feature
-7. You MUST record the feature in .agent/releases/ if it's part of a planned release
+7. You MUST record the feature in `.agent/releases/` if it's part of a planned release
 
 #### For Bug Fixes
 
-1. You MUST document the root cause in the commit message and in .agent/reflections/
+1. You MUST document the root cause in the commit message and in `.agent/reflections/`
 2. You MUST update tests to prevent regression and verify the fix
-3. You MUST record the fix in HISTORY.md for significant bugs
+3. You MUST record the fix in `/CHANGELOG.md`, but ONLY if it's a significant bug
 4. You MUST update relevant technical specs to clarify behavior
-5. You MUST assess if the bug indicates a more systemic issue and document in docs/debts/ if appropriate
+5. You MUST assess if the bug indicates a more systemic issue and document in `docs/debts/` if appropriate
 
 #### For Refactoring
 
