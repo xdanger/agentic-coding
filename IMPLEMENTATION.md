@@ -83,12 +83,18 @@ Implement mechanisms for maintaining long-term history and context:
    - Only create new records for distinct tasks
    - Use timestamped filenames (`.agent/tasks/YYYY-MM/DD_{TIMESTAMP}.md`) for distributed development
    - Maintain update history within task records
-   - Capture comprehensive task information:
+   - Capture comprehensive task information and context memory:
      - Task description and goals
-     - Implementation approaches considered
-     - Decisions made and rationales
-     - Changes implemented
-     - Issues encountered and resolutions
+     - Complete context and background information (be thorough but concise)
+     - User's original request (quoted verbatim)
+     - Project state before changes (relevant files, configurations, dependencies)
+     - Implementation approaches considered, including rejected alternatives
+     - Decisions made and detailed rationales
+     - Step-by-step changes implemented with explanations
+     - Issues encountered and their resolutions
+     - Links to relevant documentation, decisions, and past tasks
+     - Key learnings and insights gained during the task
+     - Future considerations and potential follow-up work
 
 2. Support for human-maintained documentation in `docs/`:
    - Humans are responsible for creating and updating all documentation in the `docs/` directory
@@ -193,6 +199,13 @@ Develop standardized workflows for agent task execution:
    - Only create new task records for distinct, unrelated tasks
    - Use timestamp-based filenames (`.agent/tasks/YYYY-MM/DD_{TIMESTAMP}.md`) for distributed development
    - Maintain an update history section within task records
+   - Ensure each task record contains rich, comprehensive context and memory:
+     - Include detailed background information about the task context
+     - Document the project state at the time of the task
+     - Quote relevant conversations and requirements verbatim
+     - Record detailed reasoning for implementation decisions
+     - Include valuable insights that would help future agents understand why decisions were made
+     - Link to related tasks, documents, and external resources
 
 3. Task execution process:
    - Task planning and approach documentation

@@ -75,12 +75,17 @@ project-root/
      - BEFORE creating a new task record, check if a similar task exists in recent history
      - If a similar task exists, UPDATE the existing record instead of creating a new one
      - Only create new task records in `.agent/tasks/YYYY-MM/DD_{TIMESTAMP}.md` for distinct new tasks
-     - Each task record MUST document:
+     - Each task record MUST document comprehensive context for future reference:
        - Task description and goals
-       - Implementation approaches considered
-       - Decisions made and rationales
-       - Changes implemented
-       - Issues encountered and resolutions
+       - Complete context and background information (be thorough but concise)
+       - User's original request (quoted verbatim)
+       - Project state before changes (relevant files, configurations, dependencies)
+       - Implementation approaches considered, including rejected alternatives
+       - Decisions made and detailed rationales
+       - Step-by-step changes implemented with explanations
+       - Issues encountered and their resolutions
+       - Links to relevant documentation, decisions, and past tasks
+       - Key learnings and insights gained during the task
 
 3. **Implement According to Established Standards**:
    - You MUST follow coding standards in `docs/specs/coding-standards.md`
@@ -126,7 +131,7 @@ project-root/
 1. You MUST document refactoring rationale and approach in `.agent/tasks/`, but DO NOT create decision records in `docs/decisions/`:
    - Include context and problem description
    - Document decision factors and constraints
-   - Describe alternatives considered 
+   - Describe alternatives considered
    - Explain outcome and consequences
    - Recommend to human reviewers if a formal decision record should be created
 2. You SHOULD suggest updates to technical specs to reflect new structure, but NEVER modify without explicit human instruction
