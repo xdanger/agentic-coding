@@ -16,16 +16,16 @@ Expand upon the existing `.agent` directory structure with the following improve
 project-root/
 ├── .agent/                         # AI/Agent-specific resources (maintained by AI)
 │   ├── tasks/                      # Task execution history
-│   │   └── YYYY-MM/DD_{SEQ}.md     # Individual task records
+│   │   └── YYYY-MM/DD_{TIMESTAMP}.md     # Individual task records
 │   ├── reflections/                # Lessons learned and reflections
 │   │   └── YYYY-MM/{TITLE}.md      # Reflection records by topic
 │   ├── releases/                   # Version release information
 │   │   └── YYYY-MM/v{VER}.md       # Version-specific release notes
 │   └── rules/                      # Rules for specific AI tools like Cursor
-├── docs/                           # Project documentation (maintained by humans and AI)
-│   ├── decisions/                  # Decision records
-│   │   └── YYYY/{SEQ}_{TITLE}.md   # Individual decision records
-│   ├── debts/                      # Technical debt tracking
+├── docs/                           # Project documentation (maintained by humans, agents assist but cannot modify without explicit instruction)
+│   ├── decisions/                  # Decision records (human-only, agents cannot modify)
+│   │   └── YYYY/{SEQ}_{TITLE}.md   # Individual decision records created by humans
+│   ├── debts/                      # Technical debt tracking (requires human approval)
 │   │   └── {DEBT_TITLE}.md         # Individual technical debt records
 │   ├── metrics/                    # Project health metrics
 │   │   ├── performance-metrics.md  # Performance benchmarks and goals
@@ -51,9 +51,9 @@ project-root/
 
 Create standardized configuration files for different AI agent tools:
 
-1. `/CLAUDE.md` - Already exists, contains instructions for Claude
-2. `.cursor/rules/` - Cursor-specific rules and guidelines
-3. `.agent/config/{agent_name}.json` - Configuration files for other AI tools/agents
+1. `CLAUDE.md` - System instructions for Claude Code
+2. `.cursor/rules/` - Rules and guidelines for Cursor
+3. `.claude/commands/` - Project-wide commands for Claude Code
 
 ## 2. Knowledge and Context Management
 
@@ -77,18 +77,25 @@ Develop robust documentation to provide AI agents with comprehensive project und
 
 Implement mechanisms for maintaining long-term history and context:
 
-1. Set up automatic task recording in `.agent/tasks/` to capture:
-   - Task description and goals
-   - Implementation approaches considered
-   - Decisions made and rationales
-   - Changes implemented
-   - Issues encountered and resolutions
+1. Implement task recording and management in `.agent/tasks/`:
+   - Before creating a new task record, check for similar existing tasks
+   - Update existing task records instead of creating duplicates
+   - Only create new records for distinct tasks
+   - Use timestamped filenames (`.agent/tasks/YYYY-MM/DD_{TIMESTAMP}.md`) for distributed development
+   - Maintain update history within task records
+   - Capture comprehensive task information:
+     - Task description and goals
+     - Implementation approaches considered
+     - Decisions made and rationales
+     - Changes implemented
+     - Issues encountered and resolutions
 
-2. Create a decision recording system in `docs/decisions/`:
-   - Date and author of decisions
-   - Description of changes made
-   - Motivation and rationale
-   - Impact on existing components
+2. Support for human-maintained documentation in `docs/`:
+   - Humans are responsible for creating and updating all documentation in the `docs/` directory
+   - Agents MUST NOT create or modify any files in the `docs/` directory without explicit human instruction
+   - Agents may assist humans by suggesting changes to documentation, but must wait for human approval
+   - Agents may reference and learn from existing documentation in this directory
+   - Agents should recommend when formal decision records are needed in `docs/decisions/`, but MUST NEVER create or modify these records under any circumstances
 
 3. Establish periodic reflection and knowledge consolidation:
    - Weekly summaries of tasks and learnings
@@ -133,11 +140,15 @@ Establish testing standards in `docs/specs/testing-standards.md`:
 
 Create a system for tracking and managing technical debt:
 
-1. Standardized debt documentation format in `docs/debt/{DEBT_TITLE}.md`:
-   - Problem description
-   - Impact assessment
-   - Proposed solutions
-   - Priority and timeline
+1. Technical debt documentation guidelines:
+   - Agents identify technical debt during development
+   - Agents MUST NEVER create or modify files in the `docs/` directory without explicit human instruction
+   - Agents provide recommendations with:
+     - Problem description
+     - Impact assessment
+     - Proposed solutions
+     - Suggested priority and timeline
+   - Humans make final decisions on documenting technical debt and maintaining all documentation in the `docs/` directory
 
 2. Regular debt review process:
    - Weekly debt identification during development
@@ -170,22 +181,30 @@ Establish metrics for monitoring project health:
 Develop standardized workflows for agent task execution:
 
 1. Pre-task context gathering:
-   - Review docs/specs/ and README.md
-   - Check docs/decisions/ for recent decisions
-   - Review related reflection documents in .agent/reflections/
-   - Assess relevant technical debt in docs/debts/
+   - Review `docs/specs/` and `README.md`
+   - Check `docs/decisions/` for recent decisions
+   - Review related reflection documents in `.agent/reflections/`
+   - Assess relevant technical debt in `docs/debts/`
+   - Search for similar, existing tasks in `.agent/tasks/` directory
+   - Note: Agents should only USE documentation in the `docs/` directory for reference and learning, but never modify these files without explicit human instruction
 
-2. Task execution process:
+2. Task documentation management:
+   - If similar tasks exist, update the existing task record with new information
+   - Only create new task records for distinct, unrelated tasks
+   - Use timestamp-based filenames (`.agent/tasks/YYYY-MM/DD_{TIMESTAMP}.md`) for distributed development
+   - Maintain an update history section within task records
+
+3. Task execution process:
    - Task planning and approach documentation
    - Implementation with continuous documentation
    - Testing according to standards
    - Documentation updates
 
-3. Post-task reflection:
-   - Update reflection documents in .agent/reflections/
-   - Record task history in .agent/tasks/
-   - Identify and document technical debt in docs/debts/
-   - Update metrics in docs/metrics/
+4. Post-task reflection:
+   - Update reflection documents in `.agent/reflections/`
+   - Update existing task records or create new ones in `.agent/tasks/`
+   - Identify technical debt and prepare recommendations, but NEVER modify `docs/debts/` without explicit human approval
+   - Suggest updates to metrics in `docs/metrics/`, but wait for human approval before making changes to any files in the `docs/` directory
 
 ### 5.2 Multi-Agent Collaboration Model
 
