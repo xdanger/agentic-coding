@@ -22,10 +22,10 @@ for file in $staged_md_files; do
     echo "Skipping $file (in .github directory)"
     continue
   fi
-  
+
   echo "Checking $file..."
-  python3 "$REPO_ROOT/src/doc_linter.py" --file "$REPO_ROOT/$file"
-  
+  python3 "$REPO_ROOT/utils/doc_linter.py" --file "$REPO_ROOT/$file"
+
   if [ $? -ne 0 ]; then
     echo "ERROR: Document linting failed for $file"
     echo "Please fix the errors before committing."
