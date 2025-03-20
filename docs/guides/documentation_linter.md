@@ -25,7 +25,7 @@
 
 4. **代码块格式**
    - 代码块应指定语言
-   - 纯文本代码区块必须使用 ```plaintext 而非仅使用 ```
+   - 纯文本代码区块必须使用 ```plaintext 而非仅使用```
 
 5. **Markdown 结构**
    - 文档应以单个一级标题开始
@@ -40,7 +40,7 @@
 
 ```bash
 # 运行检查工具
-python3 /src/doc_linter.py
+python3 /utils/doc_linter.py
 ```
 
 ### 3.2 检查特定文件
@@ -49,7 +49,7 @@ python3 /src/doc_linter.py
 
 ```bash
 # 检查特定文件
-python3 /src/doc_linter.py --file path/to/your/document.md
+python3 /utils/doc_linter.py --file path/to/your/document.md
 ```
 
 ### 3.3 严格模式
@@ -58,7 +58,7 @@ python3 /src/doc_linter.py --file path/to/your/document.md
 
 ```bash
 # 严格模式
-python3 /src/doc_linter.py --strict
+python3 /utils/doc_linter.py --strict
 ```
 
 ### 3.4 指定仓库根目录
@@ -67,7 +67,7 @@ python3 /src/doc_linter.py --strict
 
 ```bash
 # 指定仓库根目录
-python3 /src/doc_linter.py --root /path/to/your/repo
+python3 /utils/doc_linter.py --root /path/to/your/repo
 ```
 
 ## 4. 自动化集成
@@ -93,10 +93,10 @@ staged_md_files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.md$'
 
 if [ -n "$staged_md_files" ]; then
   echo "Running documentation linter on staged Markdown files..."
-  
+
   # 对每个暂存区中的 Markdown 文件运行检查器
   for file in $staged_md_files; do
-    python3 "$REPO_ROOT/src/doc_linter.py" --file "$REPO_ROOT/$file"
+    python3 "$REPO_ROOT/utils/doc_linter.py" --file "$REPO_ROOT/$file"
     if [ $? -ne 0 ]; then
       echo "Documentation standards violations found. Please fix them before committing."
       exit 1
@@ -135,7 +135,7 @@ def check_new_rule(self, file_path):
     """Check if the document follows the new rule."""
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
-    
+
     # 实现检查逻辑
     if some_condition:
         self.errors.append(f"New rule violation: {file_path}")
@@ -143,7 +143,7 @@ def check_new_rule(self, file_path):
 # 在 lint_file 方法中调用
 def lint_file(self, file_path):
     self.files_checked += 1
-    
+
     self.check_file_naming(file_path)
     # ... 其他检查
     self.check_new_rule(file_path)  # 新添加的规则
