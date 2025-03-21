@@ -9,7 +9,7 @@ This document outlines the required standards for all documentation in this proj
 - Use `.md` extension for standard documentation
 - Follow a consistent header structure (H1 for title, H2 for major sections, H3+ for subsections)
 - Include a table of contents for documents longer than 500 lines
-- Use syntax highlighting for code blocks (e.g., ```javascript)
+- Use syntax highlighting for code blocks (e.g., \`\`\`javascript, \`\`\`plaintext)
 - Include line numbers in examples when referencing specific parts of code
 
 ### JSDoc/TSDoc Comments

@@ -82,7 +82,7 @@ LLMs 像一个强大的大脑，但是没有眼睛、耳朵、嘴巴、手脚，
 我把 MCP 分为两类：接收器（collector）和执行器（executor）：
 
 - 接收器（collector）：接收信息输入，并将其转换为 LLMs 可以理解的信息，给 LLMs 提供更多的知识和上下文；例如：[Fetch](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch), [Firecrawl](https://github.com/mendableai/firecrawl-mcp-server), [Brave Search](https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search) 等，让 LLMs 可以获取互联网上的信息；
-- 执行器（executor）：接收 LLMs 的输出，并将其转换为可以执行的指令，让 LLMs 可以实际甚至物理上操作其他工具；[BlenderMCP](https://github.com/ahujasid/blender-mcp), [Unity MCP Package](https://github.com/justinpbarnett/unity-mcp)。
+- 执行器（executor）：接收 LLMs 的输出，并将其转换为可以执行的指令，让 LLMs 可以实际甚至物理上操作其他工具；[BlenderMCP](https://github.com/ahujasid/blender-mcp), [Unity MCP Package](https://github.com/justinpbarnett/unity-mcp), [Figma Context MCP](https://github.com/GLips/Figma-Context-MCP)。
 
 一般来说，我们把类似 Claude Code 或 Cursor 这样的 LLMs 作为 MCP 的 Client。
 
