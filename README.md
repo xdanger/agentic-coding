@@ -49,31 +49,29 @@ LLM 本质是一个与 CPU 类似的数字化处理器，接收信息输入，�
 
 一些关于项目目录结构的思路：
 
-- `README.md`：项目概述，包括项目的目标、约束、规范等；
-- `/docs/`：由人类维护（agent 可以在明确指令下修改，但不应该因为自己的需要或工作流的关系自动修改其中的内容），以传统方式存放项目的开发文档
-  - `decisions/`：存放所有与项目相关的决策记录，包括决策的背景、理由、以及决策后的结果 —— 文件格式为 `YYYY/{THREE_DIGIT_SEQUENCE_NUMBER}_{DECISION_TITLE_SLUG}.md`；
-  - `debts/`：用于存放项目当前的技术债务以及重构的机会 —— 文件格式为 `{DEBT_TITLE_SLUG}.md`。
+- `README.md`：项目概述，包括项目的目标、约束、规范等
+- `CLAUDE.md`：[Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview) 需要用到的全局 prompt
+- `.agent/`：由 agent 使用和维护，agent 可在没有人类授意的情况下依据自己的判断和工作流的要求而更新其中内容，用于存放所有 agent 生成、以及 agent 今后需要使用的相关文件；在开发过程中，需要让 LLM 在 `/.agent/` 下留下可以给自己将来使用的记忆，并不断地思考和反思，更新相应的 `/.agent/` 和 `/docs/` 目录下的文件
+  - `tasks/`：每次执行的任务信息，时间、总结人类的 prompt 和 agent 执行的工作结果与反思信息 —— 文件格式为 `YYYY-MM/DD_{TIMESTAMP}.md`
+  - `reflections/`：agent 执行任务时犯的错误、碰到的问题的总结与反思 —— 文件格式为 `YYYY-MM/{REFLECTION_TITLE_SLUG}.md`，类似的问题在一个文件中合并
+  - `releases/`：每个版本的信息，包括发布日期、版本号、发布说明等 —— 文件格式为 `YYYY-MM/v{VERSION_NUMBER}.md`
+- `.cursor/`：[Cursor Editor](https://www.cursor.com/) 的配置文件目录
+  - `rules/`：Cursor 用到的规则
+- `docs/`：由人类维护（agent 可以在明确指令下修改，但不应该因为自己的需要或工作流的关系自动修改其中的内容），以传统方式存放项目的开发文档
+  - `decisions/`：存放所有与项目相关的决策记录，包括决策的背景、理由、以及决策后的结果 —— 文件格式为 `YYYY/{THREE_DIGIT_SEQUENCE_NUMBER}_{DECISION_TITLE_SLUG}.md`
+  - `debts/`：用于存放项目当前的技术债务以及重构的机会 —— 文件格式为 `{DEBT_TITLE_SLUG}.md`
   - `metrics/`：用于存放项目当前的各类技术指标，需要包括原因和潜在的解决方法，包括：
-    - `performance-metrics.md`：性能指标；
-    - `code-quality-metrics.md`：代码质量指标；
-    - `test-coverage.md`：测试覆盖率指标；
+    - `performance-metrics.md`：性能指标
+    - `code-quality-metrics.md`：代码质量指标
+    - `test-coverage.md`：测试覆盖率指标
   - `specs/`：存放所有与项目相关的技术规范，包括：
-    - `architecture.md`：架构设计；
-    - `coding-standards.md`：编码规范；
-    - `db-schema.md`：数据库 schema；
-    - `diagrams.md`：系统图表；
-    - `documentation-standards.md`：文档格式规范；
-    - `interfaces.md`：对外接口；
-    - `testing-standards.md`：测试标准；
-- `/.agent/`：由 agent 维护（agent 可在没有人类授意的情况下依据自己的判断和工作流的要求而更新其中内容），用于存放所有 agent 生成、以及 agent 今后需要使用的相关文件。：
-  - `tasks/`：每次执行的任务信息，时间、总结人类的 prompt 和 agent 执行的工作结果与反思信息 —— 文件格式为 `YYYY-MM/DD_{TIMESTAMP}.md`；
-  - `reflections/`：agent 执行任务时犯的错误、碰到的问题的总结与反思 —— 文件格式为 `YYYY-MM/{REFLECTION_TITLE_SLUG}.md`，类似的问题在一个文件中合并；
-  - `releases/`：每个版本的信息，包括发布日期、版本号、发布说明等 —— 文件格式为 `YYYY-MM/v{VERSION_NUMBER}.md`；
-- 需要让 LLM 对于全局目标和规范约束有充分的理解；
-- 在开发过程中，需要让 LLM 在 `/.agent/` 下留下可以给自己将来使用的记忆，并不断地思考和反思，更新相应的 `/.agent/` 和 `/docs/` 目录下的文件；
-- 同时，还需要将相应的内容保存或更新到以下几个 agent 的目录，比如：
-  - 在 `/.agent/rules/` 下，保存所有 [Cursor Editor](https://www.cursor.com/) 需要用到的规则；
-  - 在 `/CLAUDE.md` 文件中，保存所有 [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview) 需要用到的全局 prompt。
+    - `architecture.md`：架构设计
+    - `coding-standards.md`：编码规范
+    - `db-schema.md`：数据库 schema
+    - `diagrams.md`：系统图表
+    - `documentation-standards.md`：文档格式规范
+    - `interfaces.md`：对外接口
+    - `testing-standards.md`：测试标准
 
 ### 给 LLM 配上工具 —— MCP
 
@@ -92,9 +90,8 @@ LLM 像一个强大的大脑，但是没有眼睛、耳朵、嘴巴、手脚，�
 
 ```plaintext
 Follow the steps below:
-1. Read `README.md`, `CLAUDE.md` and use `git diff` to fully understand the context.
-2. Think harder to create a practical agentic coding framework and a implementation plan that is elegant, efficient, and easy to practice.
-3. Put it into `IMPLEMENTATION.md` and make sure the words are concise but detailed enough to be actionable.
-4. Read `IMPLEMENTATION.md` to determine whether if it best fits the context. Update `IMPLEMENTATION.md` if needed.
-5. Create/update `IMPLEMENTATION.zh.md` with Simplified Chinese.
+1. Read `README.md` and `CLAUDE.md` and use `git diff` to fully understand the context.
+2. Think harder to create a practical agentic coding framework and an implementation plan that is elegant, efficient, and easy to practice.
+3. Insert it into `IMPLEMENTATION.md`, ensuring the language is concise yet sufficiently detailed to be actionable. By concise, I mean to avoid general rules that you would naturally follow even without documentation, thereby minimizing word redundancy and emphasizing specific instructions ones.
+4. Check `IMPLEMENTATION.md` to see if it aligns with the context. Revise `IMPLEMENTATION.md` if necessary needed.
 ```

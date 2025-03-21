@@ -1,0 +1,38 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Project Architecture
+
+## Repository Structure
+
+The repository follows a standardized structure to ensure consistency and maintainability:
+
+```plaintext
+project-root/
+├── .agent/                 # AI Agent configuration and documentation
+│   ├── reflections/        # Lessons learned and insights
+│   ├── releases/           # Release documentation
+│   └── tasks/              # Records of completed tasks
+├── docs/                   # Project documentation
+│   ├── debts/              # Technical debt documentation
+│   ├── decisions/          # Architecture decision records
+│   ├── diagrams/           # System diagrams and visualizations
+│   ├── metrics/            # Performance and quality metrics
+│   └── specs/              # Technical specifications
+├── src/                    # Source code
+│   ├── components/         # Reusable UI components
+│   ├── config/             # Configuration files
+│   ├── core/               # Core domain logic
+│   ├── services/           # Service implementations
+│   ├── utils/              # Utility functions
+│   └── types/              # TypeScript type definitions
+├── tests/                  # Test code
+│   ├── integration/        # Integration tests
+│   ├── unit/               # Unit tests
+│   └── e2e/                # End-to-end tests
+├── public/                 # Static public assets
+├── CHANGELOG.md            # Project changelog
+└── README.md               # Project overview and instructions
+```

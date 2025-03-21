@@ -1,0 +1,114 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Workflow Requirements
+
+This document defines the mandatory workflows for various task types in the Agentic Coding Framework. These workflows ensure consistent, high-quality outcomes and proper collaboration between AI agents and human developers.
+
+## General Task Process
+
+### Documentation Requirements
+
+1. **NEVER create or modify files in the `docs/` directory without explicit human instruction**
+2. **NEVER create or modify files in `docs/decisions/` under any circumstances**
+3. You MAY suggest changes to files in the `docs/` directory, but must wait for approval before implementing
+4. You MAY reference existing documents in the `docs/` directory in your documentation
+5. Update `/CHANGELOG.md`, but only for significant changes
+
+### Task Recording
+
+Each task record in `.agent/tasks/YYYY-MM/DD_{TIMESTAMP}.md` must document:
+
+1. Task description and goals
+2. Complete context and background information
+3. User's original request (quoted verbatim)
+4. Project state before changes
+5. Implementation approaches considered, including rejected alternatives
+6. Decisions made and detailed rationales
+7. Step-by-step changes implemented with explanations
+8. Issues encountered and their resolutions
+9. Links to relevant documentation, decisions, and past tasks
+10. Key learnings and insights gained during the task
+11. Future considerations and potential follow-up work
+
+- Before creating a new task record, check if a similar task exists in recent history.
+  - If a similar task exists, UPDATE the existing record instead of creating a new one
+  - Only create new task records for distinct new tasks
+- After completing significant tasks:
+  - Identify lessons learned and document them in `.agent/reflections/YYYY-MM/{REFLECTION_TITLE_SLUG}.md`
+
+### Feature-Specific Requirements
+
+1. Document architectural decisions in `/docs/decisions/`
+2. Suggest updates to component interactions in `docs/specs/diagrams.md` but wait for human approval before making changes
+3. Recommend updates to `docs/specs/architecture.md` if the feature affects project-wide understanding, but NEVER modify without explicit human instruction
+4. Suggest updates to technical specs for new components, but wait for human approval before implementing changes
+5. Recommend updates to `docs/specs/interfaces.md` for any public interfaces, but NEVER modify without explicit human instruction
+6. Record the feature in `.agent/releases/` if it's part of a planned release
+
+## Bug Fix Workflow
+
+1. Document the root cause in the commit message and in `.agent/reflections/`
+2. Update tests to prevent regression and verify the fix
+3. Suggest updates to `/CHANGELOG.md` for significant bugs, but wait for human approval before making changes
+4. Recommend updates to relevant technical specs to clarify behavior, but NEVER modify without explicit human instruction
+5. Assess if the bug indicates a more systemic issue and recommend documentation in `docs/debts/`, but NEVER create or modify files without explicit human approval
+
+## Refactoring Workflow
+
+1. Document refactoring rationale and approach in `.agent/tasks/`:
+   - Include context and problem description
+   - Document decision factors and constraints
+   - Describe alternatives considered
+   - Explain expected outcome and consequences
+   - Recommend to human reviewers if a formal decision record should be created
+2. Suggest updates to technical specs to reflect new structure, but NEVER modify without explicit human instruction
+3. Ensure all tests pass after refactoring
+4. Recommend updates to relevant metrics documents in `docs/metrics/`, but wait for human approval before making changes
+5. Verify that interfaces remain compatible and recommend documentation for breaking changes, but NEVER modify docs without explicit human instruction
+
+## Release Management
+
+- Store release documents in `.agent/releases/YYYY-MM/v{VERSION_NUMBER}.md`
+- Each release document must include:
+  - Version number, release date, and type (major, minor, patch)
+  - Summary of key highlights and changes
+  - New features with purpose and benefits
+  - Improvements and bug fixes
+  - Breaking changes with migration guides
+  - Deprecations with alternatives
+  - Known issues with workarounds
+  - Updated dependencies
+  - Contributors recognition
+
+## Technical Debt Management
+
+When identifying technical debt:
+
+1. NEVER create or modify files in the `docs/` directory without explicit human instruction
+2. Recommend technical debt documentation by providing:
+   - Problem description
+   - Impact assessment
+   - Proposed solutions
+   - Suggested priority and timeline
+3. Suggest refactoring opportunities when appropriate
+4. Recommend updates to metrics documents in `docs/metrics/` when changes impact system performance, but wait for human approval before implementing changes
+
+## Change Management
+
+1. Document all significant changes in the appropriate task record
+2. Reference task records in commit messages when applicable
+3. Use [Conventional Commits](mdc:https:/www.conventionalcommits.org/en/v1.0.0) and [GitMoji](mdc:https:/gitmoji.dev) for commit messages
+
+## Strict Enforcement
+
+These requirements are non-negotiable:
+
+1. ALWAYS reference these principles and workflows when planning your approach
+2. If a request conflicts with these principles, suggest adjustments to align with them
+3. NEVER skip documentation or testing steps, even for small changes
+4. ALWAYS prioritize maintaining the structural integrity of the repository
+5. ALWAYS provide explanations that consider the global context of the project
+6. ALWAYS document your decisions and their rationale in the appropriate locations

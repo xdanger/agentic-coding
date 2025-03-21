@@ -1,0 +1,10 @@
+---
+description: 
+globs: *.md,*.mdx
+alwaysApply: false
+---
+# Documentation Standards
+
+- Each directory should contain a README.md file explaining its purpose
+- Use clear, descriptive filenames following kebab-case
+- Use syntax highlighting for code blocks (e.g., \`\`\`javascript, \`\`\`plaintext) in Markdown files
