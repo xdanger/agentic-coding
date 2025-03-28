@@ -3,7 +3,7 @@
     "lint": "bunx biome check . && bunx markdownlint-cli2 .",
     "fix": "bunx biome format --write . && bunx markdownlint-cli2 --fix .",
     "lint:copywriting": "bunx autocorrect --lint .",
-    "fix:copywriting": "bunx autocorrect --fix .",
+    "fix:copywriting": "bunx autocorrect --fix . && bunx markdownlint-cli2 --fix .",
     "test": "bun run lint && bun run lint:copywriting",
     "prepare": "husky"
   },
