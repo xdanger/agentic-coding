@@ -98,12 +98,12 @@ LLM 像一个强大的大脑，但是没有眼睛、耳朵、嘴巴、手脚，�
 
 ## 解决方案
 
-以上是完整的上下文，解决方案由 AI 输出，保存在 [IMPLEMENTATION.md](./IMPLEMENTATION.md)。prompt 如下：
+以上是完整的上下文，解决方案由 AI 输出，保存在 [PLAN.md](./PLAN.md)。prompt 如下：
 
 ```plaintext
 Follow the steps below:
 1. Read `README.md` and `CLAUDE.md` and use `git diff` to fully understand the context.
 2. Think harder to create a practical agentic coding framework and an implementation plan that is elegant, efficient, and easy to practice.
-3. Insert it into `IMPLEMENTATION.md`, ensuring the language is concise yet sufficiently detailed to be actionable. By concise, I mean to avoid general rules that you would naturally follow even without documentation, thereby minimizing word redundancy and emphasizing specific instructions ones.
-4. Check `IMPLEMENTATION.md` to see if it aligns with the context. Revise `IMPLEMENTATION.md` if necessary needed.
+3. Insert it into `PLAN.md`, ensuring the language is concise yet sufficiently detailed to be actionable. By concise, I mean to avoid general rules that you would naturally follow even without documentation, thereby minimizing word redundancy and emphasizing specific instructions ones.
+4. Check `PLAN.md` to see if it aligns with the context. Revise `PLAN.md` if necessary needed.
 ```
