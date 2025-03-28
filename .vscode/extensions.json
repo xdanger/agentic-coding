@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "biomejs.biome",
+    "charliermarsh.ruff",
+    "dbaeumer.vscode-eslint",
+    "huacnlee.autocorrect",
+    "ms-playwright.playwright",
+    "unifiedjs.vscode-mdx"
+  ]
+}

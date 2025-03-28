@@ -1,0 +1,36 @@
+{
+  // 完全开启/关闭 AutoCorrect，默认：true
+  "autocorrect.enable": true,
+  // 开启/关闭 AutoCorrect Lint 检查，默认：true
+  "autocorrect.enableLint": true,
+  // 是否启用 formatOnSave，默认：true
+  "autocorrect.formatOnSave": true,
+  // 对于通用文件是否启用 formatOnSave，默认：false
+  "editor.formatOnSave": true,
+  "files.associations": {
+    "*.mdx": "mdx"
+  },
+  "[markdown]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "unifiedjs.vscode-mdx",
+    "editor.tabSize": 2
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.tabSize": 2
+  },
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[typescript]": {
+    "editor.tabSize": 2
+  },
+  "ruff.nativeServer": "on"
+}

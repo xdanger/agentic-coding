@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "lint": "bunx biome check . && bunx markdownlint-cli2 .",
+    "fix": "bunx biome format --write . && bunx markdownlint-cli2 --fix .",
+    "lint:copywriting": "bunx autocorrect --lint .",
+    "fix:copywriting": "bunx autocorrect --fix .",
+    "test": "bun run lint && bun run lint:copywriting",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "biome": "^0.3.3",
+    "husky": "^9.1.7"
+  },
+  "packageManager": "bun@1.2.5"
+}
