@@ -12,7 +12,19 @@
 
 LLM 本质是一个与 CPU 类似的数字化处理器，接收信息输入，处理后输出信息。区别是，CPU 输出的信息是基于确定的规则的，可重现的；而 LLM 是一种神经网络处理器，输出的信息是基于概率的。因此，LLM 就能用来处理原来再强大的 CPU 也无法处理的非结构化数据与模糊问题。
 
-韦氏智商测试（Wechsler Intelligence Scale）会对这些方面的能力进行量化测试：语言理解（Verbal Comprehension）、 语言流畅（Language Fluency）、数字能力（Numerical Ability）、视觉空间/知觉推理（Visual Spatial / Perceptual Reasoning）、流体推理（Fluid Reasoning）、记忆（Working Memory）、处理速度（Processing Speed）、执行功能（Executive Function）。
+```mermaid
+graph LR
+    A1[输入] --> B1[CPU: 基于规则处理] --> C1[确定性输出]
+    A2[输入] --> B2[LLM: 基于概率处理] --> C2[概率性输出]
+    D[非结构化数据/模糊问题] --> B2
+    D -.- |难以处理| B1
+```
+
+之所以通用人工智能的英文是 AGI 而不是 GAI，是因为 General Intelligence 在计算机出现之前就是一个学术名词了 *—— 查尔斯·斯皮尔曼（Charles Spearman）于 1904 年提出的 $g$ 因子（general factor）理论，认为智力由一个通用因子（g）和多个特殊因子（s）组成 ——* 用于描述多种能力维度的测试表现出的智力上的相关性。
+
+什么是智力？—— 智力就是预测未来的能力，也就是预测未来某个事件发生的概率的准确率。
+
+韦氏智商测试（Wechsler Intelligence Scale）会对这些方面的能力进行量化测试：语言理解（Verbal Comprehension）、语言流畅（Language Fluency）、数字能力（Numerical Ability）、视觉空间/知觉推理（Visual Spatial / Perceptual Reasoning）、流体推理（Fluid Reasoning）、记忆（Working Memory）、处理速度（Processing Speed）、执行功能（Executive Function）。
 
 可以说，LLM 在所有这些方面的表现都会远远优于人类：
 
